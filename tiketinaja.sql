@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2021 at 03:44 PM
+-- Generation Time: May 17, 2021 at 08:02 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -45,13 +45,15 @@ CREATE TABLE `booking` (
 --
 
 INSERT INTO `booking` (`booking_id`, `user_id`, `premiere_id`, `show_time_id`, `booking_ticket`, `booking_total_price`, `booking_payment_method`, `booking_status`, `booking_updated_at`, `booking_created_at`) VALUES
-(1, 3, 1, 1, 3, 20, 'ovo', 'succes', '2021-04-26 05:25:22', '2021-05-26 12:25:22'),
-(2, 3, 1, 2, 3, 40, 'gpay', 'succes', '2021-04-26 05:30:20', '2021-04-26 12:30:20'),
-(3, 3, 1, 4, 4, 12, 'visa', 'succes', '2021-04-26 05:31:33', '2021-03-26 12:31:33'),
-(4, 3, 2, 2, 4, 24, 'paypal', 'succes', '2021-04-26 05:33:52', '2021-04-26 12:33:52'),
-(5, 3, 2, 2, 3, 18, 'gpay', 'succes', '2021-04-26 05:35:32', '2021-04-26 12:35:32'),
-(6, 3, 1, 1, 4, 12, 'paypal', 'succes', '2021-04-26 06:47:20', '2021-04-26 13:47:20'),
-(7, 3, 2, 2, 2, 12, 'Bank BRI', 'succes', '2021-04-27 00:41:44', '2021-04-27 07:41:44');
+(1, 37, 1, 1, 3, 20, 'ovo', 'succes', '2021-04-26 05:25:22', '2021-05-26 12:25:22'),
+(2, 37, 1, 2, 3, 40, 'gpay', 'succes', '2021-04-26 05:30:20', '2021-04-26 12:30:20'),
+(3, 37, 1, 4, 4, 12, 'visa', 'succes', '2021-04-26 05:31:33', '2021-03-26 12:31:33'),
+(4, 37, 2, 2, 4, 24, 'paypal', 'succes', '2021-04-26 05:33:52', '2021-04-26 12:33:52'),
+(5, 37, 2, 2, 3, 18, 'gpay', 'succes', '2021-04-26 05:35:32', '2021-04-26 12:35:32'),
+(6, 34, 1, 1, 4, 12, 'paypal', 'succes', '2021-04-26 06:47:20', '2021-04-26 13:47:20'),
+(7, 34, 2, 2, 2, 12, 'Bank BRI', 'succes', '2021-04-27 00:41:44', '2021-04-27 07:41:44'),
+(9, 34, 1, 3, 1, 3, 'Bank BRI', 'succes', '2021-05-04 08:14:08', '2021-05-04 15:14:08'),
+(10, 34, 1, 3, 1, 3, 'gopay', 'succes', '2021-05-04 08:16:12', '2021-05-04 15:16:12');
 
 -- --------------------------------------------------------
 
@@ -92,7 +94,9 @@ INSERT INTO `booking_seat` (`booking_seat_id`, `booking_id`, `booking_seat_locat
 (20, 6, 'E6'),
 (21, 6, 'E5'),
 (22, 7, 'B11'),
-(23, 7, 'A8');
+(23, 7, 'A8'),
+(27, 9, 'E4'),
+(28, 10, 'G2');
 
 -- --------------------------------------------------------
 
@@ -150,10 +154,9 @@ INSERT INTO `movie` (`movie_id`, `movie_name`, `movie_category`, `movie_release_
 (4, 'Tenet', 'Action, slice of life', '2021-05-02', 'kang dir-4', 'kang casting-4', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content her', '01:01:00', '2021-04-26 05:48:25', '2021-04-30 13:54:00', '2021-04-30T13-54-00.058Zg9.png'),
 (5, 'Lion King', 'Action, slice of life, drama', '2021-05-02', 'kang dir-5', 'kang casting-5', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content her', '01:31:00', '2021-04-26 05:50:22', '2021-04-30 13:54:47', '2021-04-30T13-54-47.665Zg5.png'),
 (6, 'Makan BANG !', 'Action, slice of life, comedy', '2021-05-02', 'kang dir-6', 'kang casting-6', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content her', '01:12:00', '2021-04-26 05:51:20', '2021-04-30 13:56:30', '2021-04-30T13-56-30.553Zmakan_bang.jpg'),
-(7, 'Cyber Punk 2077', 'Action, Comedy', '2021-05-02', 'kang dir-7', 'kang casting-7', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content her', '01:12:00', '2021-04-26 05:52:23', '2021-04-30 13:58:05', '2021-04-30T13-58-05.613Zcyber.jpg'),
+(7, 'Cyber Punk 2077', 'Action, Comedy', '2021-05-02', 'kang dir-7', 'kang casting-7', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content her', '01:12:00', '2021-04-26 05:52:23', '2021-05-07 13:22:50', '2021-05-07T13-22-50.142Zcyber.jpg'),
 (19, 'Nichijou', 'Comedy, scile of life', '2021-01-03', 'kang dir-8', 'kang casting-8', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content her', '23:12:00', '2021-04-28 23:17:49', '2021-04-30 13:59:58', '2021-04-30T13-59-58.313Znichijou.jpg'),
-(20, 'Tilik', 'Comedy, drama', '2021-02-03', 'kang dir-9', 'kang casting-9', 'mangan opo lek ?', '03:12:00', '2021-04-29 04:56:25', '2021-04-30 14:03:24', '2021-04-30T14-03-24.491Ztilik.jpg'),
-(21, 'dawdwx-2', 'sasa', '2021-02-03', 'dir-2', 'kang casting-1', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using \'Content her', '01:02:00', '2021-04-29 05:23:21', '2021-04-29 05:27:15', '2021-04-29T05-27-15.224Zg6.png');
+(20, 'Tilik', 'Comedy, drama', '2021-02-03', 'kang dir-9', 'kang casting-9', 'mangan opo lek ?', '03:12:00', '2021-04-29 04:56:25', '2021-05-07 13:12:26', '2021-05-07T09-50-16.319Ztilik.jpg');
 
 -- --------------------------------------------------------
 
@@ -238,8 +241,8 @@ INSERT INTO `user` (`user_id`, `user_role`, `user_verification`, `user_name`, `u
 (2, 'basic', 'succes', 'nugo', 'nugo@gmail.com', '088237213782', '$2b$10$ZGRVtkRYm4fYUTxNxFCbhOqUpfHKHQvpioRf8JXpf0kuOClv0sdoG', '', '2021-04-27 11:14:33', NULL),
 (5, 'basic', 'pending', 'admin2', 'admin2@gmail.com', '0838232', '$2b$10$BdlrIR9pho0VLLJEfrVNIuPVXjmhcj0JNH72yFeiFGyha73hw8fIW', '', '2021-04-29 07:56:06', NULL),
 (6, 'basic', 'succes', 'ext2', 'ext@gmail.com', '083323231', '$2b$10$VkFTl3qKDKSEDLdM1xpvz.TggnKIwx1Y5hdcTyWA6..YJj.W1Ywta', '', '2021-04-29 12:19:09', NULL),
-(15, 'admin', 'succes', 'Admin Legend', 'timotiusnugroho999@gmail.com', '1213', '$2b$10$MKbcou./t/KD3HFgPckl8OEf/sXmQhU6W3M//BKX.4PyrE9x8U.7K', '2021-05-03T13-36-11.854Zpp.png', '2021-05-03 10:18:45', NULL),
-(19, 'basic', 'succes', 'Samiro Legend 2', 'timotius.nugroho.arkademy@gmail.com', '665645', '$2b$10$STR6bMSCcvGYWEKZGxCiV.Fb.dGNdSxWFd4CLRcu1OlMwbV9Bu8Cy', '2021-05-03T13-33-43.591Zpp.png', '2021-05-03 20:06:49', NULL);
+(34, 'admin', 'succes', 'Madara EZ', 'timotius.nugroho.arkademy@gmail.com', '323', '$2b$10$HQRy7welkSzjPzudrHyH.OHFQ6J9MpB5poSnZDDFWz3J97FxDmIjO', '2021-05-09T08-49-50.160Zmadara.jpg', '2021-05-07 13:57:30', NULL),
+(38, 'basic', 'succes', 'Samiro-1 Legend', 'timotiusnugroho999@gmail.com', '2123', '$2b$10$dpwA/yBMxIuxJTJGDAi0v.CULynO0yvazn2boCv9PEJ9/iuFSXvkO', '2021-05-10T03-30-27.069Zsquid.jpg', '2021-05-10 10:29:01', NULL);
 
 --
 -- Indexes for dumped tables
@@ -295,13 +298,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `booking`
 --
 ALTER TABLE `booking`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `booking_seat`
 --
 ALTER TABLE `booking_seat`
-  MODIFY `booking_seat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `booking_seat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `location`
@@ -313,7 +316,7 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `movie`
 --
 ALTER TABLE `movie`
-  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `movie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `premiere`
@@ -331,7 +334,7 @@ ALTER TABLE `show_time`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
