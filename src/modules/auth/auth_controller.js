@@ -3,17 +3,14 @@ const bcrypt = require('bcrypt')
 const authModel = require('./auth_model')
 const jwt = require('jsonwebtoken')
 
+const dataRefreshToken = {}
+
 module.exports = {
   register: async (req, res) => {
     try {
       // console.log(req.body)
-      const {
-        userEmail,
-        userPassword,
-        firstName,
-        lastName,
-        userPhoneNumber
-      } = req.body
+      const { userEmail, userPassword, firstName, lastName, userPhoneNumber } =
+        req.body
 
       const salt = bcrypt.genSaltSync(10)
       const encryptPassword = bcrypt.hashSync(userPassword, salt)
@@ -77,11 +74,18 @@ module.exports = {
           console.log('User berhasil login')
           const payload = checkEmailUser[0]
           delete payload.user_password
+
           const token = jwt.sign({ ...payload }, 'RAHASIA', {
+            expiresIn: '30s'
+          })
+
+          const refreshToken = jwt.sign({ ...payload }, 'RAHASIA', {
             expiresIn: '24h'
           })
 
-          const result = { ...payload, token }
+          const result = { ...payload, token, refreshToken }
+          dataRefreshToken[checkEmailUser[0].user_id] = refreshToken
+          console.log('tmp token', dataRefreshToken)
           return helper.response(res, 200, 'Succes Login !', result)
         } else {
           return helper.response(res, 400, 'Worng password')
@@ -89,6 +93,42 @@ module.exports = {
       } else {
         return helper.response(res, 404, 'Email not Registed')
       }
+    } catch (error) {
+      return helper.response(res, 400, 'Bad Request', error)
+    }
+  },
+
+  refresh: async (req, res) => {
+    try {
+      const { refreshToken } = req.body
+      // console.log(refreshToken)
+      jwt.verify(refreshToken, 'RAHASIA', (error, result) => {
+        if (
+          (error && error.name === 'JsonWebTokenError') ||
+          (error && error.name === 'TokenExpiredError')
+        ) {
+          delete dataRefreshToken.userId
+          return helper.response(res, 403, error.message)
+        } else {
+          if (
+            result.user_id in dataRefreshToken &&
+            dataRefreshToken[result.user_id] === refreshToken
+          ) {
+            delete result.iat
+            delete result.exp
+            const token = jwt.sign(result, 'RAHASIA', { expiresIn: '30s' })
+            const newResult = { ...result, token, refreshToken }
+            return helper.response(
+              res,
+              200,
+              'Success Refresh Token !',
+              newResult
+            )
+          } else {
+            return helper.response(res, 403, 'Wrong Refresh Token')
+          }
+        }
+      })
     } catch (error) {
       return helper.response(res, 400, 'Bad Request', error)
     }
@@ -102,7 +142,7 @@ module.exports = {
       console.log(token)
       if (/^\d+$/.test(token)) {
         userId = token
-        setData = { user_verification: 'succes' }
+        setData = { user_verification: '1' }
       } else {
         jwt.verify(token, 'RAHASIA', (error, result) => {
           if (

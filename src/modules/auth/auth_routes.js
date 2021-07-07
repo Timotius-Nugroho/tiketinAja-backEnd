@@ -5,13 +5,15 @@ const {
   register,
   login,
   requestChange,
-  changeData
+  changeData,
+  refresh
 } = require('./auth_controller')
 
 Route.get('/change-data/:token', changeData)
 
 Route.post('/login', login)
 Route.post('/register', register)
+Route.post('/refresh', refresh)
 Route.post('/request-change', authMiddleware.authentication, requestChange)
 
 module.exports = Route
