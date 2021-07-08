@@ -76,7 +76,7 @@ module.exports = {
           delete payload.user_password
 
           const token = jwt.sign({ ...payload }, 'RAHASIA', {
-            expiresIn: '30s'
+            expiresIn: '3h'
           })
 
           const refreshToken = jwt.sign({ ...payload }, 'RAHASIA', {
@@ -116,7 +116,7 @@ module.exports = {
           ) {
             delete result.iat
             delete result.exp
-            const token = jwt.sign(result, 'RAHASIA', { expiresIn: '30s' })
+            const token = jwt.sign(result, 'RAHASIA', { expiresIn: '3h' })
             const newResult = { ...result, token, refreshToken }
             return helper.response(
               res,
@@ -208,7 +208,7 @@ module.exports = {
         expiresIn: '24h'
       })
 
-      const url = `http://localhost:3001/api/v1/auth/change-data/${token}`
+      const url = `http://localhost:3001/backend1/api/v1/auth/change-data/${token}`
 
       // send email for verificatioan here
       helper.sendMail(
