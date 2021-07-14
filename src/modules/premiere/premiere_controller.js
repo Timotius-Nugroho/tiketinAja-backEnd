@@ -1,8 +1,7 @@
 const helper = require('../../helpers')
 const premiereModel = require('./premiere_model')
 const locationModel = require('./location_model')
-const redis = require('redis')
-const client = redis.createClient()
+const client = require('../../config/redis')
 
 module.exports = {
   getPremiereName: async (req, res) => {

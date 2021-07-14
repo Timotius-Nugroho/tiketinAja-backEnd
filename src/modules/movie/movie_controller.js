@@ -1,7 +1,6 @@
 const helper = require('../../helpers')
 const movieModel = require('./movie_model')
-const redis = require('redis')
-const client = redis.createClient()
+const client = require('../../config/redis')
 
 module.exports = {
   getMovieName: async (req, res) => {
@@ -9,6 +8,7 @@ module.exports = {
       const result = await movieModel.movieName()
       return helper.response(res, 200, 'Succes get movie name', result)
     } catch (error) {
+      console.log(error)
       return helper.response(res, 400, 'Bad Request', error)
     }
   },
