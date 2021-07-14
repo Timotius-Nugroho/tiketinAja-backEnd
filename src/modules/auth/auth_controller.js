@@ -32,7 +32,7 @@ module.exports = {
         const result = await authModel.register(setData)
         delete result.user_password
 
-        const url = `http://localhost:3001/api/v1/auth/change-data/${result.id}`
+        const url = `https://tiketinaja-api.herokuapp.com/backend1/api/v1/auth/change-data/${result.id}`
 
         // send email for verificatioan here
         helper.sendMail('Please activate your account', url, userEmail)
@@ -208,7 +208,7 @@ module.exports = {
         expiresIn: '24h'
       })
 
-      const url = `http://localhost:3001/backend1/api/v1/auth/change-data/${token}`
+      const url = `https://tiketinaja-api.herokuapp.com/backend1/api/v1/auth/change-data/${token}`
 
       // send email for verificatioan here
       helper.sendMail(
