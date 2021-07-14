@@ -72,7 +72,10 @@ module.exports = {
   postBooking: async (req, res) => {
     try {
       const { bookingSeat, ...setData } = req.body
-      const result = await bookingModel.createData(setData)
+      const result = await bookingModel.createData({
+        ...setData,
+        user_id: req.decodeToken.user_id
+      })
 
       console.log(result.insertId)
       for (const e of bookingSeat) {
@@ -85,6 +88,7 @@ module.exports = {
       }
       return helper.response(res, 200, 'Succes Create Booking Data', result)
     } catch (error) {
+      console.log(error)
       return helper.response(res, 400, 'Bad Request', error)
     }
   }
